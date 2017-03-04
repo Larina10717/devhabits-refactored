@@ -1,0 +1,122 @@
+  [1m[35m (357.7ms)[0m  [1m[35mDROP DATABASE IF EXISTS "devhabits_test"[0m
+  [1m[35m (774.2ms)[0m  [1m[35mCREATE DATABASE "devhabits_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (108.8ms)[0m  [1m[35mCREATE TABLE "goals" ("id" serial primary key, "name" character varying, "progress" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "description" text, "user_id" integer)[0m
+  [1m[35m (118.6ms)[0m  [1m[35mCREATE TABLE "skills" ("id" serial primary key, "language" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (105.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "firstname" character varying, "lastname" character varying, "email" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "goal_id" integer)[0m
+  [1m[35m (60.9ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users" USING btree ("email")[0m
+  [1m[35m (72.9ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users" USING btree ("reset_password_token")[0m
+  [1m[35m (107.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (8.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES ('20170225123651')[0m
+  [1m[35m (10.6ms)[0m  [1m[32mINSERT INTO schema_migrations (version) VALUES ('20160801182205'), ('20160729202505'), ('20160801182255'), ('20160807150502'), ('20170225121222'), ('20160810021214');
+
+[0m
+  [1m[35m (101.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "test"], ["created_at", 2017-02-25 17:12:24 UTC], ["updated_at", 2017-02-25 17:12:24 UTC]]
+  [1m[35m (10.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "goals" DISABLE TRIGGER ALL;ALTER TABLE "skills" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixture Delete (0.7ms)[0m  [1m[31mDELETE FROM "goals"[0m
+  [1m[36mFixture Insert (0.8ms)[0m  [1m[32mINSERT INTO "goals" ("name", "progress", "created_at", "updated_at", "id") VALUES ('MyString', 1, '2017-02-25 17:12:25.142314', '2017-02-25 17:12:25.142314', 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "goals" ("name", "progress", "created_at", "updated_at", "id") VALUES ('MyString', 1, '2017-02-25 17:12:25.142314', '2017-02-25 17:12:25.142314', 298486374)[0m
+  [1m[36mFixture Delete (0.8ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Insert (0.7ms)[0m  [1m[32mINSERT INTO "users" ("firstname", "lastname", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', '2017-02-25 17:12:25.166580', '2017-02-25 17:12:25.166580', 980190962)[0m
+  [1m[36mFixture Insert (0.9ms)[0m  [1m[32mINSERT INTO "users" ("firstname", "lastname", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', '2017-02-25 17:12:25.166580', '2017-02-25 17:12:25.166580', 298486374)[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "goals" DISABLE TRIGGER ALL;ALTER TABLE "skills" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixture Delete (3.5ms)[0m  [1m[31mDELETE FROM "goals"[0m
+  [1m[36mFixture Insert (0.7ms)[0m  [1m[32mINSERT INTO "goals" ("name", "progress", "created_at", "updated_at", "id") VALUES ('MyString', 1, '2017-02-25 17:12:25.836340', '2017-02-25 17:12:25.836340', 980190962)[0m
+  [1m[36mFixture Insert (0.6ms)[0m  [1m[32mINSERT INTO "goals" ("name", "progress", "created_at", "updated_at", "id") VALUES ('MyString', 1, '2017-02-25 17:12:25.836340', '2017-02-25 17:12:25.836340', 298486374)[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "users" ("firstname", "lastname", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', '2017-02-25 17:12:25.851076', '2017-02-25 17:12:25.851076', 980190962)[0m
+  [1m[36mFixture Insert (0.6ms)[0m  [1m[32mINSERT INTO "users" ("firstname", "lastname", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', '2017-02-25 17:12:25.851076', '2017-02-25 17:12:25.851076', 298486374)[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "goals" DISABLE TRIGGER ALL;ALTER TABLE "skills" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "goals"[0m
+  [1m[36mFixture Insert (0.7ms)[0m  [1m[32mINSERT INTO "goals" ("name", "progress", "created_at", "updated_at", "id") VALUES ('MyString', 1, '2017-02-25 17:12:25.882152', '2017-02-25 17:12:25.882152', 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "goals" ("name", "progress", "created_at", "updated_at", "id") VALUES ('MyString', 1, '2017-02-25 17:12:25.882152', '2017-02-25 17:12:25.882152', 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Insert (0.6ms)[0m  [1m[32mINSERT INTO "users" ("firstname", "lastname", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', '2017-02-25 17:12:25.894560', '2017-02-25 17:12:25.894560', 980190962)[0m
+  [1m[36mFixture Insert (1.3ms)[0m  [1m[32mINSERT INTO "users" ("firstname", "lastname", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', '2017-02-25 17:12:25.894560', '2017-02-25 17:12:25.894560', 298486374)[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.0ms)[0m  [1m[35mALTER TABLE "goals" DISABLE TRIGGER ALL;ALTER TABLE "skills" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "goals"[0m
+  [1m[36mFixture Insert (0.7ms)[0m  [1m[32mINSERT INTO "goals" ("name", "progress", "created_at", "updated_at", "id") VALUES ('MyString', 1, '2017-02-25 17:12:25.919601', '2017-02-25 17:12:25.919601', 980190962)[0m
+  [1m[36mFixture Insert (0.6ms)[0m  [1m[32mINSERT INTO "goals" ("name", "progress", "created_at", "updated_at", "id") VALUES ('MyString', 1, '2017-02-25 17:12:25.919601', '2017-02-25 17:12:25.919601', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Insert (0.6ms)[0m  [1m[32mINSERT INTO "users" ("firstname", "lastname", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', '2017-02-25 17:12:25.929654', '2017-02-25 17:12:25.929654', 980190962)[0m
+  [1m[36mFixture Insert (0.9ms)[0m  [1m[32mINSERT INTO "users" ("firstname", "lastname", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', '2017-02-25 17:12:25.929654', '2017-02-25 17:12:25.929654', 298486374)[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "goals" DISABLE TRIGGER ALL;ALTER TABLE "skills" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "goals"[0m
+  [1m[36mFixture Insert (0.6ms)[0m  [1m[32mINSERT INTO "goals" ("name", "progress", "created_at", "updated_at", "id") VALUES ('MyString', 1, '2017-02-25 17:12:25.946734', '2017-02-25 17:12:25.946734', 980190962)[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "goals" ("name", "progress", "created_at", "updated_at", "id") VALUES ('MyString', 1, '2017-02-25 17:12:25.946734', '2017-02-25 17:12:25.946734', 298486374)[0m
+  [1m[36mFixture Delete (0.7ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Insert (0.6ms)[0m  [1m[32mINSERT INTO "users" ("firstname", "lastname", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', '2017-02-25 17:12:25.957282', '2017-02-25 17:12:25.957282', 980190962)[0m
+  [1m[36mFixture Insert (1.0ms)[0m  [1m[32mINSERT INTO "users" ("firstname", "lastname", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', '2017-02-25 17:12:25.957282', '2017-02-25 17:12:25.957282', 298486374)[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "goals" DISABLE TRIGGER ALL;ALTER TABLE "skills" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixture Delete (0.7ms)[0m  [1m[31mDELETE FROM "goals"[0m
+  [1m[36mFixture Insert (0.9ms)[0m  [1m[32mINSERT INTO "goals" ("name", "progress", "created_at", "updated_at", "id") VALUES ('MyString', 1, '2017-02-25 17:12:25.981521', '2017-02-25 17:12:25.981521', 980190962)[0m
+  [1m[36mFixture Insert (0.7ms)[0m  [1m[32mINSERT INTO "goals" ("name", "progress", "created_at", "updated_at", "id") VALUES ('MyString', 1, '2017-02-25 17:12:25.981521', '2017-02-25 17:12:25.981521', 298486374)[0m
+  [1m[36mFixture Delete (0.7ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Insert (0.6ms)[0m  [1m[32mINSERT INTO "users" ("firstname", "lastname", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', '2017-02-25 17:12:25.994881', '2017-02-25 17:12:25.994881', 980190962)[0m
+  [1m[36mFixture Insert (1.3ms)[0m  [1m[32mINSERT INTO "users" ("firstname", "lastname", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', '2017-02-25 17:12:25.994881', '2017-02-25 17:12:25.994881', 298486374)[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.3ms)[0m  [1m[35mALTER TABLE "goals" DISABLE TRIGGER ALL;ALTER TABLE "skills" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "goals"[0m
+  [1m[36mFixture Insert (0.6ms)[0m  [1m[32mINSERT INTO "goals" ("name", "progress", "created_at", "updated_at", "id") VALUES ('MyString', 1, '2017-02-25 17:12:26.019819', '2017-02-25 17:12:26.019819', 980190962)[0m
+  [1m[36mFixture Insert (0.6ms)[0m  [1m[32mINSERT INTO "goals" ("name", "progress", "created_at", "updated_at", "id") VALUES ('MyString', 1, '2017-02-25 17:12:26.019819', '2017-02-25 17:12:26.019819', 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Insert (0.6ms)[0m  [1m[32mINSERT INTO "users" ("firstname", "lastname", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', '2017-02-25 17:12:26.030987', '2017-02-25 17:12:26.030987', 980190962)[0m
+  [1m[36mFixture Insert (0.9ms)[0m  [1m[32mINSERT INTO "users" ("firstname", "lastname", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', '2017-02-25 17:12:26.030987', '2017-02-25 17:12:26.030987', 298486374)[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "goals" DISABLE TRIGGER ALL;ALTER TABLE "skills" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "goals"[0m
+  [1m[36mFixture Insert (0.7ms)[0m  [1m[32mINSERT INTO "goals" ("name", "progress", "created_at", "updated_at", "id") VALUES ('MyString', 1, '2017-02-25 17:12:26.055225', '2017-02-25 17:12:26.055225', 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "goals" ("name", "progress", "created_at", "updated_at", "id") VALUES ('MyString', 1, '2017-02-25 17:12:26.055225', '2017-02-25 17:12:26.055225', 298486374)[0m
+  [1m[36mFixture Delete (0.7ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Insert (2.5ms)[0m  [1m[32mINSERT INTO "users" ("firstname", "lastname", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', '2017-02-25 17:12:26.065124', '2017-02-25 17:12:26.065124', 980190962)[0m
+  [1m[36mFixture Insert (2.0ms)[0m  [1m[32mINSERT INTO "users" ("firstname", "lastname", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', '2017-02-25 17:12:26.065124', '2017-02-25 17:12:26.065124', 298486374)[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "goals" DISABLE TRIGGER ALL;ALTER TABLE "skills" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixture Delete (0.8ms)[0m  [1m[31mDELETE FROM "goals"[0m
+  [1m[36mFixture Insert (0.6ms)[0m  [1m[32mINSERT INTO "goals" ("name", "progress", "created_at", "updated_at", "id") VALUES ('MyString', 1, '2017-02-25 17:12:26.094982', '2017-02-25 17:12:26.094982', 980190962)[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "goals" ("name", "progress", "created_at", "updated_at", "id") VALUES ('MyString', 1, '2017-02-25 17:12:26.094982', '2017-02-25 17:12:26.094982', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "users" ("firstname", "lastname", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', '2017-02-25 17:12:26.105111', '2017-02-25 17:12:26.105111', 980190962)[0m
+  [1m[36mFixture Insert (0.6ms)[0m  [1m[32mINSERT INTO "users" ("firstname", "lastname", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', '2017-02-25 17:12:26.105111', '2017-02-25 17:12:26.105111', 298486374)[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m

@@ -1,0 +1,6 @@
+- if user_signed_in?
+ .jumbotron
+  %h1 Perfect, now to achieve your goal:
+  %h1= @goal
+- else
+ %h1= link_to 'divide it into smaller tasks', new_skill_path

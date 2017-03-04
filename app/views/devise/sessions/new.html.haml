@@ -1,0 +1,22 @@
+%h3
+  Access your habits 
+
+= form_for @user, :html => {:class => "form-horizontal"} do |f|
+  - if @user.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(user.errors.count, "error")
+        prohibited this user from being saved:
+      %ul
+        - user.errors.full_messages.each do |message|
+          %li= message
+  .form-group
+    = f.label :email
+    = f.email_field :email
+  .form-group
+    = f.label :password
+    = f.password_field :password, autocomplete: 'off'
+  .form-group
+    = f.submit 'Sign in', class: 'btn btn-default signin'
+  .form-group
+    = render "devise/shared/links"

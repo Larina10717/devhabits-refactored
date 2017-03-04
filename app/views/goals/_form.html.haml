@@ -1,0 +1,17 @@
+= form_for @goal, :html => {:class => "form-horizontal"} do |f|
+  - if @goal.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@goal.errors.count, "error")
+        prohibited this goal from being saved:
+      %ul
+        - @goal.errors.full_messages.each do |message|
+          %li= message
+  .form-group
+    = f.label :name
+    = f.text_field :name
+  .form-group
+    = f.label :description
+    = f.text_area :description
+  .form-group
+    = f.submit class: 'btn btn-default signin'

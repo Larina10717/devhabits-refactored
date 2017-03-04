@@ -1,0 +1,4 @@
+.jumbotron
+  %h1 Welcome!
+  - if @goals.nil?
+   %h3 Have you set up your new goal? Do it #{link_to 'here', new_goal_path}
