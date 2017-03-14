@@ -41,6 +41,10 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'faker'
   gem 'fabrication'
+  gem 'rspec-core'
+  gem 'rspec-expectations'
+  gem 'rspec-mocks'
+  gem 'rspec-rails'
 end
 
 group :development do
