@@ -51,11 +51,11 @@ CREATE TABLE ar_internal_metadata (
 
 CREATE TABLE goals (
     id integer NOT NULL,
-    user_id integer,
     name character varying,
     description text,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    user_id integer
 );
 
 
@@ -93,8 +93,8 @@ CREATE TABLE schema_migrations (
 
 CREATE TABLE skills (
     id integer NOT NULL,
-    goal_id integer,
-    name character varying
+    name character varying,
+    goal_id integer
 );
 
 
@@ -126,7 +126,6 @@ CREATE TABLE users (
     first_name character varying,
     last_name character varying,
     email character varying,
-    goal_id integer,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     encrypted_password character varying DEFAULT ''::character varying NOT NULL,
@@ -243,17 +242,26 @@ CREATE UNIQUE INDEX index_users_on_email ON users USING btree (email);
 
 
 --
--- Name: index_users_on_goal_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_users_on_goal_id ON users USING btree (goal_id);
-
-
---
 -- Name: index_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE UNIQUE INDEX index_users_on_reset_password_token ON users USING btree (reset_password_token);
+
+
+--
+-- Name: fk_rails_c5fd9c8a38; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY goals
+    ADD CONSTRAINT fk_rails_c5fd9c8a38 FOREIGN KEY (user_id) REFERENCES users(id);
+
+
+--
+-- Name: fk_rails_ec7866f27f; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY skills
+    ADD CONSTRAINT fk_rails_ec7866f27f FOREIGN KEY (goal_id) REFERENCES goals(id);
 
 
 --
@@ -262,6 +270,6 @@ CREATE UNIQUE INDEX index_users_on_reset_password_token ON users USING btree (re
 
 SET search_path TO "$user", public;
 
-INSERT INTO schema_migrations (version) VALUES ('20160729202505'), ('20160801182255'), ('20160810021214'), ('20170225195846');
+INSERT INTO schema_migrations (version) VALUES ('20160729202505'), ('20160801182255'), ('20160810021214'), ('20170225195846'), ('20170319140237'), ('20170319181505');
 
 

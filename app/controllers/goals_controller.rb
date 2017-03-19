@@ -1,4 +1,5 @@
 class GoalsController < ApplicationController
+  include GoalsHelper
   before_action :set_goal, only: [:show, :edit, :update, :destroy]
 
 
