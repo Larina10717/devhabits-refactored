@@ -1,11 +1,11 @@
 = form_for @user, :html => {:class => "form-horizontal"} do |f|
   -#= devise_error_messages!
   .form-group
-    = f.label :firstname
-    = f.text_field :firstname
+    = f.label :first_name
+    = f.text_field :first_name
   .form-group
-    = f.label :lastname
-    = f.text_field :lastname
+    = f.label :last_name
+    = f.text_field :last_name
   .form-group
     = f.label :email
     = f.email_field :email, autofocus: true
@@ -14,6 +14,7 @@
     - if @minimum_password_length
       %em
         (#{@minimum_password_length} characters minimum)
+    %br
     = f.password_field :password, autocomplete: "off"
   .form-group
     = f.label :password_confirmation

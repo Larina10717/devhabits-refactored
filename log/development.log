@@ -3093,3 +3093,412 @@ Processing by Devise::SessionsController#new as HTML
 Completed 200 OK in 52ms (Views: 49.9ms | ActiveRecord: 0.0ms)
 
 
+  [1m[35m (94.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (52.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "goals"[0m
+  [1m[36mGoal Load (1.0ms)[0m  [1m[34mSELECT  "goals".* FROM "goals" ORDER BY "goals"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+Started GET "/" for 127.0.0.1 at 2017-03-19 12:08:16 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (20.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from <class:UsersController> at /home/anna/Devhabits-refactored/app/controllers/users_controller.rb:2)
+Processing by UsersController#index as HTML
+Completed 401 Unauthorized in 34ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-03-19 12:08:17 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.haml within layouts/application
+  Rendered devise/shared/_links.html.haml (3.2ms)
+  Rendered devise/sessions/new.html.haml within layouts/application (57.2ms)
+Completed 200 OK in 981ms (Views: 951.8ms | ActiveRecord: 6.3ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-03-19 12:08:47 +0100
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"pwXrUq2AU7yd4t+yBgpsffvtqOEEobpt70rxTcaeJ3OfKQpFlkJfwO9MHzku2Gmq0TCdUFvocmdSjrAD2IljVw==", "user"=>{"email"=>"gigia@gigioni.com", "password"=>"[FILTERED]"}, "commit"=>"Sign in"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (1.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "gigia@gigioni.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  Rendering devise/registrations/new.html.haml within layouts/application
+  Rendered devise/shared/_links.html.haml (4.2ms)
+  Rendered devise/registrations/new.html.haml within layouts/application (13.4ms)
+Completed 200 OK in 438ms (Views: 71.2ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-03-19 12:09:21 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.haml within layouts/application
+  Rendered devise/shared/_links.html.haml (3.6ms)
+  Rendered devise/registrations/new.html.haml within layouts/application (24.6ms)
+Completed 200 OK in 111ms (Views: 108.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-03-19 12:09:44 +0100
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6sk1PM+/kgubEH7Q8xQI+W/lTPudc69GD8KsIdJhEHXS5dQr9H2ed+m+vlvbxg0uRTh5SsI6Z0yyBu1vzHZUUQ==", "user"=>{"first_name"=>"Micia", "last_name"=>"Micioni", "email"=>"micia@micioni.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+Unpermitted parameters: first_name, last_name
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (1.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "micia@micioni.com"], ["LIMIT", 1]]
+  [1m[35mSQL (16.9ms)[0m  [1m[32mINSERT INTO "users" ("email", "created_at", "updated_at", "encrypted_password") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "micia@micioni.com"], ["created_at", 2017-03-19 11:09:44 UTC], ["updated_at", 2017-03-19 11:09:44 UTC], ["encrypted_password", "$2a$11$C9Res1zpTKpMD.edUJZemuOVeqn6rb1tHEVB/0T76e1PfodMxxfMu"]]
+  [1m[35m (19.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "sign_in_count" = $2, "current_sign_in_at" = $3, "last_sign_in_at" = $4, "current_sign_in_ip" = $5, "last_sign_in_ip" = $6 WHERE "users"."id" = $7[0m  [["updated_at", 2017-03-19 11:09:44 UTC], ["sign_in_count", 1], ["current_sign_in_at", 2017-03-19 11:09:44 UTC], ["last_sign_in_at", 2017-03-19 11:09:44 UTC], ["current_sign_in_ip", "127.0.0.1/32"], ["last_sign_in_ip", "127.0.0.1/32"], ["id", 3]]
+  [1m[35m (2.9ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 309ms (ActiveRecord: 41.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-03-19 12:09:44 +0100
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering users/index.html.haml within layouts/application
+  Rendered users/index.html.haml within layouts/application (1.5ms)
+Completed 200 OK in 87ms (Views: 72.1ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/goals/new" for 127.0.0.1 at 2017-03-19 12:09:47 +0100
+Processing by GoalsController#new as HTML
+  Rendering goals/new.html.haml within layouts/application
+  Rendered goals/_form.html.haml (25.7ms)
+  Rendered goals/new.html.haml within layouts/application (33.1ms)
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 143ms (Views: 96.3ms | ActiveRecord: 8.7ms)
+
+
+Started POST "/goals" for 127.0.0.1 at 2017-03-19 12:09:58 +0100
+Processing by GoalsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"r1iWc3ZeruNI8dqiHOvYjlHTMMf+2Nn+QoIAo9jwbx6XdHdkTZyinzpfGik0Od1Zew4FdqGREfT/RkHtxucrOg==", "goal"=>{"name"=>"Capybara", "description"=>"learn capybara"}, "commit"=>"Create Goal"}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (37.9ms)[0m  [1m[32mINSERT INTO "goals" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Capybara"], ["description", "learn capybara"], ["created_at", 2017-03-19 11:09:58 UTC], ["updated_at", 2017-03-19 11:09:58 UTC]]
+  [1m[35m (51.9ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/goals
+Completed 302 Found in 96ms (ActiveRecord: 90.1ms)
+
+
+Started GET "/goals" for 127.0.0.1 at 2017-03-19 12:09:59 +0100
+Processing by GoalsController#index as HTML
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "goals"."name" FROM "goals" WHERE "goals"."id" IS NULL[0m
+  Rendering goals/index.html.haml within layouts/application
+  Rendered goals/index.html.haml within layouts/application (1.9ms)
+Completed 200 OK in 125ms (Views: 106.3ms | ActiveRecord: 2.3ms)
+
+
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (1.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "sherwood.king@marks.name"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (1.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "wade@wintheiser.io"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demarco@browncollins.org"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (1.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "laura@macejkovic.net"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+Started GET "/goals" for 127.0.0.1 at 2017-03-19 12:56:09 +0100
+Processing by GoalsController#index as HTML
+  [1m[36mUser Load (7.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "goals"."name" FROM "goals" WHERE "goals"."id" IS NULL[0m
+  Rendering goals/index.html.haml within layouts/application
+  Rendered goals/index.html.haml within layouts/application (3.1ms)
+Completed 200 OK in 387ms (Views: 288.4ms | ActiveRecord: 37.3ms)
+
+
+Started GET "/goals" for 127.0.0.1 at 2017-03-19 12:57:15 +0100
+Processing by GoalsController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "goals"."name" FROM "goals" WHERE "goals"."id" IS NULL[0m
+  Rendering goals/index.html.haml within layouts/application
+  Rendered goals/index.html.haml within layouts/application (3.0ms)
+Completed 200 OK in 89ms (Views: 81.3ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/goals" for 127.0.0.1 at 2017-03-19 12:57:32 +0100
+Processing by GoalsController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "goals"."name" FROM "goals" WHERE "goals"."id" IS NULL[0m
+  Rendering goals/index.html.haml within layouts/application
+  Rendered goals/index.html.haml within layouts/application (3.1ms)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 2.0ms)
+
+
+  
+ActionView::Template::Error (The line was indented 2 levels deeper than the previous line.):
+    2:  .jumbotron
+    3:   %h1 Perfect, now to achieve your goal:
+    4:   %h1 
+    5:     = @goal
+    6: - else
+    7:  %h1= link_to 'divide it into smaller tasks', new_skill_path
+  
+app/views/goals/index.html.haml:5
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (11.0ms)
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.3ms)
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (47.2ms)
+Started GET "/goals" for 127.0.0.1 at 2017-03-19 12:59:13 +0100
+Processing by GoalsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "goals"."name" FROM "goals" WHERE "goals"."id" IS NULL[0m
+  Rendering goals/index.html.haml within layouts/application
+  Rendered goals/index.html.haml within layouts/application (1.2ms)
+Completed 500 Internal Server Error in 32ms (ActiveRecord: 1.0ms)
+
+
+  
+ActionView::Template::Error (The line was indented 2 levels deeper than the previous line.):
+    2:  .jumbotron
+    3:   %h1 Perfect, now to achieve your goal:
+    4:   %h1 
+    5:     = @goal
+    6: - else
+    7:  %h1= link_to 'divide it into smaller tasks', new_skill_path
+  
+app/views/goals/index.html.haml:5
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (7.3ms)
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (32.0ms)
+Started GET "/goals" for 127.0.0.1 at 2017-03-19 12:59:16 +0100
+Processing by GoalsController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT "goals"."name" FROM "goals" WHERE "goals"."id" IS NULL[0m
+  Rendering goals/index.html.haml within layouts/application
+  Rendered goals/index.html.haml within layouts/application (2.6ms)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 2.7ms)
+
+
+  
+ActionView::Template::Error (The line was indented 2 levels deeper than the previous line.):
+    2:  .jumbotron
+    3:   %h1 Perfect, now to achieve your goal:
+    4:   %h1 
+    5:     = @goal
+    6: - else
+    7:  %h1= link_to 'divide it into smaller tasks', new_skill_path
+  
+app/views/goals/index.html.haml:5
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (7.7ms)
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.2ms)
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (32.0ms)
+Started GET "/goals" for 127.0.0.1 at 2017-03-19 13:00:29 +0100
+Processing by GoalsController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "goals"."name" FROM "goals" WHERE "goals"."id" IS NULL[0m
+  Rendering goals/index.html.haml within layouts/application
+  Rendered goals/index.html.haml within layouts/application (2.2ms)
+Completed 200 OK in 76ms (Views: 68.9ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/goals" for 127.0.0.1 at 2017-03-19 13:00:57 +0100
+Processing by GoalsController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "goals"."name" FROM "goals" WHERE "goals"."id" IS NULL[0m
+  Rendering goals/index.html.haml within layouts/application
+  Rendered goals/index.html.haml within layouts/application (2.5ms)
+Completed 200 OK in 70ms (Views: 64.3ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/goals" for 127.0.0.1 at 2017-03-19 13:01:20 +0100
+Processing by GoalsController#index as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "goals"."name" FROM "goals" WHERE "goals"."id" IS NULL[0m
+  Rendering goals/index.html.haml within layouts/application
+  Rendered goals/index.html.haml within layouts/application (22.8ms)
+Completed 500 Internal Server Error in 36ms (ActiveRecord: 2.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `goal' for #<User:0x007fc968a98218>
+Did you mean?  goals):
+    2:  .jumbotron
+    3:   %h1 Perfect, now to achieve your goal:
+    4:   %h1
+    5:   = current_user.goal
+    6: - else
+    7:  %h1= link_to 'divide it into smaller tasks', new_skill_path
+  
+app/views/goals/index.html.haml:5:in `_app_views_goals_index_html_haml___2701665527974741729_70251510538520'
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.7ms)
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (30.9ms)
+Started GET "/goals" for 127.0.0.1 at 2017-03-19 13:01:42 +0100
+Processing by GoalsController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "goals"."name" FROM "goals" WHERE "goals"."id" IS NULL[0m
+  Rendering goals/index.html.haml within layouts/application
+  Rendered goals/index.html.haml within layouts/application (5.4ms)
+Completed 200 OK in 83ms (Views: 75.5ms | ActiveRecord: 2.5ms)
+
+
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mGoal Load (0.5ms)[0m  [1m[34mSELECT  "goals".* FROM "goals" ORDER BY "goals"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (26.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2704347303781671240);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddUsersRefToGoals (20170319121105)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (113.8ms)[0m  [1m[35mALTER TABLE "goals" ADD "user_id" integer[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(2704347303781671240)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (38.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[35m (5009.8ms)[0m  [1m[35mDROP DATABASE IF EXISTS "devhabits_development"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2704347303781671240);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateSkills (20170225195846)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (128.4ms)[0m  [1m[35mDROP TABLE "skills"[0m
+  [1m[35mSQL (8.3ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20170225195846"]]
+  [1m[35m (52.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddDeviseToUsers (20160810021214)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(2704347303781671240)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2704347303781671240);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateSkills (20170225195846)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (247.2ms)[0m  [1m[35mCREATE TABLE "skills" ("id" serial primary key, "goal_id" integer, "name" character varying)[0m
+  [1m[35m (50.5ms)[0m  [1m[35mCREATE  INDEX  "index_skills_on_goal_id" ON "skills"  ("goal_id")[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170225195846"]]
+  [1m[35m (22.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddUsersRefToGoals (20170319121105)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.6ms)[0m  [1m[35mALTER TABLE "goals" ADD "user_id" integer[0m
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(2704347303781671240)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2704347303781671240);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (28.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(2704347303781671240)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY version[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[35m (5042.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "devhabits_development"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[35m (526.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "devhabits_development"[0m
+  [1m[35m (344.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "devhabits_test"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "devhabits_development"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "devhabits_test"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "devhabits_development"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "devhabits_test"[0m
+DEPRECATION WARNING: cleanup! is deprecated and will be removed from Rails 5.1 (use Rails.application.reloader.reload! instead of cleanup + prepare) (called from serve at /usr/lib/ruby/vendor_ruby/spring/application.rb:152)
+  [1m[35m (377.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (226.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2704347303781671240);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsers (20160729202505)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (111.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (4.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20160729202505"]]
+  [1m[35m (26.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateGoals (20160801182255)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (77.1ms)[0m  [1m[35mCREATE TABLE "goals" ("id" serial primary key, "name" character varying, "description" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20160801182255"]]
+  [1m[35m (16.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddDeviseToUsers (20160810021214)
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (110.6ms)[0m  [1m[35mALTER TABLE "users" ADD "encrypted_password" character varying DEFAULT '' NOT NULL[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "users" ADD "reset_password_token" character varying[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "users" ADD "reset_password_sent_at" timestamp[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "users" ADD "remember_created_at" timestamp[0m
+  [1m[35m (73.5ms)[0m  [1m[35mALTER TABLE "users" ADD "sign_in_count" integer DEFAULT 0 NOT NULL[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "users" ADD "current_sign_in_at" timestamp[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "users" ADD "last_sign_in_at" timestamp[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "users" ADD "current_sign_in_ip" inet[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "users" ADD "last_sign_in_ip" inet[0m
+  [1m[35m (56.2ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35m (26.6ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20160810021214"]]
+  [1m[35m (17.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateSkills (20170225195846)
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (66.6ms)[0m  [1m[35mCREATE TABLE "skills" ("id" serial primary key, "name" character varying)[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170225195846"]]
+  [1m[35m (14.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", 2017-03-19 14:01:44 UTC], ["updated_at", 2017-03-19 14:01:44 UTC]]
+  [1m[35m (20.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(2704347303781671240)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY version[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2704347303781671240);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (53.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddUserRefToGoals (20170319140237)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (92.9ms)[0m  [1m[35mALTER TABLE "goals" ADD "user_id" integer[0m
+  [1m[35m (205.7ms)[0m  [1m[35mCREATE  INDEX  "index_goals_on_user_id" ON "goals"  ("user_id")[0m
+  [1m[35m (125.7ms)[0m  [1m[35mALTER TABLE "goals" ADD CONSTRAINT "fk_rails_c5fd9c8a38"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170319140237"]]
+  [1m[35m (22.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (15.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(2704347303781671240)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY version[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2704347303781671240);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddGoalRefToSkills (20170319181505)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "skills" ADD "goal_id" integer[0m
+  [1m[35m (38.4ms)[0m  [1m[35mCREATE  INDEX  "index_skills_on_goal_id" ON "skills"  ("goal_id")[0m
+  [1m[35m (16.3ms)[0m  [1m[35mALTER TABLE "skills" ADD CONSTRAINT "fk_rails_ec7866f27f"
+FOREIGN KEY ("goal_id")
+  REFERENCES "goals" ("id")
+[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170319181505"]]
+  [1m[35m (13.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(2704347303781671240)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY version[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (20.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "rudolph.brekke@koelpinpouros.biz"], ["LIMIT", 1]]
+  [1m[35mSQL (7.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "created_at", "updated_at", "encrypted_password") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Tamia"], ["last_name", "Conn"], ["email", "rudolph.brekke@koelpinpouros.biz"], ["created_at", 2017-03-19 20:12:34 UTC], ["updated_at", 2017-03-19 20:12:34 UTC], ["encrypted_password", "$2a$11$dKTUi3lO0ONTDcVX0kmUWehuV3Lt6kD8cHZ.MbHnGe4axa/yzV63q"]]
+  [1m[35m (41.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "cortez_boehm@mayert.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "created_at", "updated_at", "encrypted_password") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Annetta"], ["last_name", "Doyle"], ["email", "cortez_boehm@mayert.org"], ["created_at", 2017-03-19 20:15:20 UTC], ["updated_at", 2017-03-19 20:15:20 UTC], ["encrypted_password", "$2a$11$HUa9uJ7e8t67sZ0i.ua8BeVpLpwFJh08.eUijYNaXrmpBhzou0mHS"]]
+  [1m[35m (14.9ms)[0m  [1m[35mCOMMIT[0m

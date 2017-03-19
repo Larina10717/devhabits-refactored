@@ -32,6 +32,11 @@ gem 'cancancan'
 
 # binding.pry
   gem 'pry'
+# use pry instead of irb
+  gem 'pry-rails'
+
+# for awesome console
+  gem 'awesome_print'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -41,6 +46,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'faker'
   gem 'fabrication'
+  gem 'factory_girl_rails' 
   gem 'rspec-core'
   gem 'rspec-expectations'
   gem 'rspec-mocks'
