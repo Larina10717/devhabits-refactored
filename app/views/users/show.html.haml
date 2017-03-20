@@ -1,4 +1,5 @@
 .jumbotron
-  %h1 Welcome!
-  - if @goals.nil?
-   %h3 Have you set up your new goal? Do it #{link_to 'here', new_goal_path}
+  %h1 This is what you want to learn:
+  .container-fluid
+    %h1
+      = @goal

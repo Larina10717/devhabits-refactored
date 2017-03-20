@@ -54,8 +54,7 @@ CREATE TABLE goals (
     name character varying,
     description text,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    user_id integer
+    updated_at timestamp without time zone NOT NULL
 );
 
 
@@ -136,7 +135,8 @@ CREATE TABLE users (
     current_sign_in_at timestamp without time zone,
     last_sign_in_at timestamp without time zone,
     current_sign_in_ip inet,
-    last_sign_in_ip inet
+    last_sign_in_ip inet,
+    goal_id integer
 );
 
 
@@ -221,13 +221,6 @@ ALTER TABLE ONLY users
 
 
 --
--- Name: index_goals_on_user_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_goals_on_user_id ON goals USING btree (user_id);
-
-
---
 -- Name: index_skills_on_goal_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -242,6 +235,13 @@ CREATE UNIQUE INDEX index_users_on_email ON users USING btree (email);
 
 
 --
+-- Name: index_users_on_goal_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_users_on_goal_id ON users USING btree (goal_id);
+
+
+--
 -- Name: index_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -249,11 +249,11 @@ CREATE UNIQUE INDEX index_users_on_reset_password_token ON users USING btree (re
 
 
 --
--- Name: fk_rails_c5fd9c8a38; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: fk_rails_d0594ac04e; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY goals
-    ADD CONSTRAINT fk_rails_c5fd9c8a38 FOREIGN KEY (user_id) REFERENCES users(id);
+ALTER TABLE ONLY users
+    ADD CONSTRAINT fk_rails_d0594ac04e FOREIGN KEY (goal_id) REFERENCES goals(id);
 
 
 --
@@ -270,6 +270,6 @@ ALTER TABLE ONLY skills
 
 SET search_path TO "$user", public;
 
-INSERT INTO schema_migrations (version) VALUES ('20160729202505'), ('20160801182255'), ('20160810021214'), ('20170225195846'), ('20170319140237'), ('20170319181505');
+INSERT INTO schema_migrations (version) VALUES ('20160729202505'), ('20160801182255'), ('20160810021214'), ('20170225195846'), ('20170319181505'), ('20170319213215');
 
 

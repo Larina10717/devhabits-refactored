@@ -1,3 +1,8 @@
 
 .jumbotron
-  %h1 #{link_to 'Set a goal', new_goal_path} to start!
+  - if current_user.goal_id.blank?
+    %h1 Choose a goal to start!
+    = render 'choose_goal'
+  - if current_user.goal_id?
+    %h1 You want to learn
+    = @goals

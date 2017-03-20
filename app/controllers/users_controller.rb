@@ -1,16 +1,16 @@
 class UsersController < ApplicationController
   include UsersHelper
+  include GoalsHelper
 
   before_filter :authenticate_user!
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_filter :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :current_goal, except: [:destroy]
  
-
   def index
-    @users = User.all
+    @user = current_user
   end
 
   def show
-    @goals = Goal.where(user_id: @user.id).to_a
   end
 
   def new
@@ -54,14 +54,22 @@ class UsersController < ApplicationController
     end
   end
 
+  def user_goals
+    @goals ||= Goal.where(id: current_user.goal_id).map(&:name).to_s
+  end
+
+  def current_goal
+    @goal ||= Goal.where(id: current_user.goal_id).first.name
+  end
+
   private
-    # Use callbacks to share common setup or constraints between actions.
+# Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:firstname, :lastname, :email)
+      params.require(:user).permit(:firstname, :lastname, :email, :goal_id)
     end
 end

@@ -11,21 +11,16 @@ class GoalsController < ApplicationController
   end
 
   def index
-    @goals = Goal.all.map(&:name)
+   #@goal = Goal.where(id: current_user.goal_id).first.&name
   end
 
   def create
     @goal = Goal.new(goal_params)
-
-    respond_to do |format|
       if @goal.save
-        format.html { redirect_to goals_path, notice: 'Goal was successfully created.' }
-        format.json { render :index, status: :created, location: @goal }
+        redirect_to goals_path, flash[:notice] = 'Goal was successfully created.' 
       else
-        format.html { render :new }
-        format.json { render json: @goal.errors, status: :unprocessable_entity }
+        flash[:notice] = 'Goal could not be created' 
       end
-    end
   end
 
   def show
@@ -64,6 +59,6 @@ class GoalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def goal_params
-      params.require(:goal).permit(:name, :description, :progress)
+      params.require(:goal).permit(:name, :description)
     end
 end
