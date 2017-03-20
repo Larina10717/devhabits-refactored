@@ -3,5 +3,5 @@ Fabricator(:user) do
   last_name { Faker::Name.last_name }
   email { Faker::Internet.email }
   password 'cicciobello1'
-  goal_id 1 
+  goal_id { Fabricate(:goal).id } 
 end

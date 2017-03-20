@@ -1,0 +1,9 @@
+= notice
+= simple_form_for @user, :html => {:class => "form-group"} do |f|
+  .form-group
+    = f.input :goal_id, collection: goals_collection, as: :select,
+      placeholder_text: 'click to display a list'
+  %br
+  .form-group
+    = f.submit class: 'btn btn-default signin'
+
