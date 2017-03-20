@@ -11,7 +11,7 @@ class GoalsController < ApplicationController
   end
 
   def index
-   #@goal = Goal.where(id: current_user.goal_id).first.&name
+   @goal = Goal.where(id: current_user.goal_id).map(&:name).first
   end
 
   def create
