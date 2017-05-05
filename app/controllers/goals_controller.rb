@@ -1,5 +1,5 @@
 class GoalsController < ApplicationController
-  include GoalsHelper
+
   before_action :set_goal, only: [:show, :edit, :update, :destroy]
 
 
@@ -11,7 +11,7 @@ class GoalsController < ApplicationController
   end
 
   def index
-   @goal = Goal.where(id: current_user.goal_id).map(&:name).first
+   @goal = Goal.where(id: current_user&.goal_id).map(&:name).first
   end
 
   def create

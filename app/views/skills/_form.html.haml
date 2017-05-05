@@ -1,0 +1,9 @@
+= notice
+= simple_form_for @skill, :html => {:class => "form-horizontal"} do |f|
+  .form-group
+    = f.text_field :name, collection: skills_collection, as: :select,
+      placeholder: 'click to display a list'
+  %br
+  .form-group
+    = f.submit class: 'btn btn-default signin'
+

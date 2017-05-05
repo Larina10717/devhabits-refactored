@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-  include UsersHelper
-  include GoalsHelper
 
   before_filter :authenticate_user!
   before_filter :set_user, only: [:show, :edit, :update, :destroy]
@@ -59,7 +57,7 @@ class UsersController < ApplicationController
   end
 
   def current_goal
-    @goal ||= Goal.where(id: current_user.goal_id).first.name
+    @goal ||= Goal.where(id: current_user&.goal_id).first&.name
   end
 
   private

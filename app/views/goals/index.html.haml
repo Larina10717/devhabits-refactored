@@ -1,9 +1,14 @@
 .jumbotron
-  %h1 Perfect, now to achieve your goal:
-  %br
-  %h1
-    = @goal
-  %br
-  %h1
-    =link_to 'divide it into smaller tasks', new_skill_path
+  - if user_signed_in? && @goal? 
+    %h1 Perfect, now to achieve your goal
+    %br
+    %h1
+      = @goal
+    %br
+    %h1
+      = link_to 'divide it into smaller tasks', new_skill_path
+  - if user_signed_in? && @goal.blank? 
+    = link_to 'No goal yet? Create one here!', new_goal_path
+  -else
+    %h3 Please login to create new Goals
 
