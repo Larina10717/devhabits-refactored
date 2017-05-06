@@ -3,6 +3,7 @@ class GoalsController < ApplicationController
   before_action :set_goal, only: [:show, :edit, :update, :destroy]
 
 
+
   def new
     @goal = Goal.new
   end

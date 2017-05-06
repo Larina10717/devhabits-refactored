@@ -1,0 +1,17 @@
+.navbar.navbar-inverse.navbar-fixed-top
+  .container
+    .navbar-header
+      %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      =link_to("DevHabits", root_path, :class => "navbar-brand", :id => "logo")
+    .collapse.navbar-collapse
+      %ul.nav.navbar-nav.navbar-right
+        %li= link_to("Goals", goals_path)
+        %li= link_to("About")
+        %li= link_to("Contact")
+        - if user_signed_in?
+          .btn.btn-default.signin.navbar-btn= link_to 'Logout', destroy_user_session_path, method: :delete
+        - else
+          .btn.btn-default.signin.navbar-btn= link_to 'Login', root_path 
